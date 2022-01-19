@@ -2,7 +2,11 @@
 
 namespace TurboCollections
 {
-    public class TurboList
+    public class TurboList<T>
     {
+        public TurboList()
+        {
+            Console.WriteLine("Hello, Turbo!");
+        }
     }
 }
