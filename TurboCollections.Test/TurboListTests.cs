@@ -18,5 +18,14 @@ namespace TurboCollections.Test
             list.Add(5);
             Assert.AreEqual(1,list.Count);
         }
+        
+        [Test, TestCase(5), TestCase(7)]
+        public void AddingMultipleElementIncreasesTheCount(int numberOfElements)
+        {
+            var list = new TurboList<int>();
+            for (int i = 0; i < numberOfElements; i++)
+                list.Add(5);
+            Assert.AreEqual(numberOfElements,list.Count);
+        }
     }
 }
