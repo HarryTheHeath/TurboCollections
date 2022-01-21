@@ -57,7 +57,7 @@ namespace TurboCollections.Test
         
         public class WhenSetting
         {
-            [Test]
+            [TestCase(666)]
             public void ExistingItemsAreOverwritten(int item)
             {
                 // discount operator used as only interested in List
