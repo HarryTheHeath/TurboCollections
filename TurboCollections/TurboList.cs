@@ -8,10 +8,11 @@ namespace TurboCollections
         public int Count { get; private set; }
         
         private T[] items = Array.Empty<T>();
-        public TurboList()
+        
+        /*public TurboList()
         {
-            Console.WriteLine("Helloooo, Turboooo!");
-        }
+            Console.WriteLine("Helloooo Turboooo!");
+        }*/
 
         public void Add(T item)
         {
@@ -50,6 +51,11 @@ namespace TurboCollections
         public T Get(int index)
         {
             return items[index];
+        }
+
+        public void Set(int index, T item)
+        {
+            items[index] = item;
         }
     }
 }
