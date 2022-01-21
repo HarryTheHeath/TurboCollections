@@ -66,5 +66,10 @@ namespace TurboCollections
             }
             Count = 0;
         }
+
+        public void RemoveAt(int index)
+        {
+            Count--;
+        }
     }
 }
