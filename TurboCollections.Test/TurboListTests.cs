@@ -69,8 +69,15 @@ namespace TurboCollections.Test
             var (_, list) = CreateTestData();
             Assert.Throws<IndexOutOfRangeException>(() => list.Set(setIndex, 666));
         }
-     
-        
+
+        [Test]
+        public void IsEmptyAfterClearing()
+        {
+            var (_, list) = CreateTestData();
+            list.Clear();
+            Assert.Zero(list.Count);
+        }
+
         (int[] numbers, TurboList<int>) CreateTestData()
         {
             int[] numbers = {4, 13, 27, -88, 9, 39, 2};
