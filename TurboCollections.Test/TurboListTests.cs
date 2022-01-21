@@ -77,7 +77,17 @@ namespace TurboCollections.Test
             list.Clear();
             Assert.Zero(list.Count);
         }
-
+        
+        [Test]
+        public void FirstItemIsAddedAtIndexZeroAfterClearing()
+        {
+            var (_, list) = CreateTestData();
+            list.Clear();
+            list.Add(5);
+            Assert.AreEqual(1, list.Count);
+            Assert.AreEqual(5, list.Get(0));
+        }
+        
         (int[] numbers, TurboList<int>) CreateTestData()
         {
             int[] numbers = {4, 13, 27, -88, 9, 39, 2};
