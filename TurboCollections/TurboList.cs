@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -98,6 +99,14 @@ namespace TurboCollections
             if (index == -1)
                 return;
             RemoveAt(index);
+        }
+
+        public void AddRange(IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                Add(item);
+            }
         }
     }
 }
