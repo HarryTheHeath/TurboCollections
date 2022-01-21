@@ -45,11 +45,8 @@ namespace TurboCollections.Test
             {
                 list.Add(number);
             }
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                Assert.AreEqual(numbers[i], list.Get(i));
-            }
+            
+            GetListValue();
         }
         
         [Test]
@@ -61,7 +58,6 @@ namespace TurboCollections.Test
             // replace value with 666
             list.Set(2, item);
             Assert.AreEqual(item, list.Get(2));
-
         }
         
         [Test]
@@ -75,9 +71,22 @@ namespace TurboCollections.Test
             list.Set(setIndex, 666);
             Assert.AreEqual(setIndex+1, list.Count);
             Assert.AreEqual(666, list.Get(setIndex));
-
+        }
+        
+        [Test]
+        public void ExtendingViaSettingPersistsOldValues()
+        {
+            const int setIndex = 100;
+            // discount operator used as only interested in List
+            var (numbers, list) = CreateTestData();
+            
+            // replace value with 666
+            list.Set(setIndex, 666);
+            GetListValue();
         }
 
+        
+        
         (int[] numbers, TurboList<int>) CreateTestData()
         {
             int[] numbers = {4, 13, 27, -88, 9, 39, 2};
@@ -86,6 +95,15 @@ namespace TurboCollections.Test
                 list.Add(number);
 
             return (numbers, list);
+        }
+
+        public void GetListValue()
+        {
+            var (numbers, list) = CreateTestData();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Assert.AreEqual(numbers[i], list.Get(i));
+            }
         }
     }
 }
