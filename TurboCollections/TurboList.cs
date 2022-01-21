@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace TurboCollections
@@ -74,6 +75,16 @@ namespace TurboCollections
                 items[i] = items[i + 1];
             }
             Count--;
+        }
+
+        public bool Contains(T item)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (item.Equals(items[i]))
+                    return true;
+            }
+            return false;
         }
     }
 }
