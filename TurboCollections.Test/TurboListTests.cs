@@ -88,6 +88,22 @@ namespace TurboCollections.Test
             Assert.AreEqual(5, list.Get(0));
         }
         
+        [Test]
+        public void ItemsAreClearedWhenClearing()
+        {
+            // given 
+            var (_numbers, list) = CreateTestData();
+            
+            // when
+            list.Clear();
+            
+            // then
+            for (int i = 0; i < _numbers.Length; i++)
+            {
+                Assert.Zero(list.Get(i));
+            }
+        }
+
         (int[] numbers, TurboList<int>) CreateTestData()
         {
             int[] numbers = {4, 13, 27, -88, 9, 39, 2};
