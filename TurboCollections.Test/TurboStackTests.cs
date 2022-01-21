@@ -57,6 +57,15 @@ namespace TurboCollections.Test
                     Assert.AreEqual(item, stack.Peek());
                 }
                 
+                [TestCase(1, -7)]
+                [TestCase(5, 0)] 
+                [TestCase(1337, 333)]
+                public void TheLatestItemCanBePopped(int count, int item)
+                {
+                    var stack = GiveAndPush(count);
+                    stack.Push(item);
+                    Assert.AreEqual(item, stack.Pop());
+                }
         
             }
         }
