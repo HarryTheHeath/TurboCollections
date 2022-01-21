@@ -79,12 +79,17 @@ namespace TurboCollections
 
         public bool Contains(T item)
         {
+            return IndexOf(item) != -1;
+        }
+        
+        public int IndexOf(T item)
+        {
             for (int i = 0; i < Count; i++)
             {
                 if (item.Equals(items[i]))
-                    return true;
+                    return i;
             }
-            return false;
+            return -1;
         }
     }
 }
