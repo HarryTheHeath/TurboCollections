@@ -36,5 +36,21 @@ namespace TurboCollections.Test
             Assert.AreEqual(1337, list.Get(0));
 
         }
+        
+        [Test]
+        public void MultipleAddedElementsCanBeGotten()
+        {
+            int[] numbers = {4, 13, 27, -88, 9, 39, 2};
+            var list = new TurboList<int>();
+            foreach (var number in numbers)
+            {
+                list.Add(number);
+            }
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Assert.AreEqual(numbers[i], list.Get(i));
+            }
+        }
     }
 }
