@@ -103,6 +103,16 @@ namespace TurboCollections.Test
                 Assert.Zero(list.Get(i));
             }
         }
+        
+        [Test]
+        public void CountIsReducedWhenRemovingAt()
+        {
+            var (_numbers, list) = CreateTestData();
+
+            list.RemoveAt(2);
+            
+            Assert.AreEqual(_numbers.Length-1, list.Count);
+        }
 
         (int[] numbers, TurboList<int>) CreateTestData()
         {
