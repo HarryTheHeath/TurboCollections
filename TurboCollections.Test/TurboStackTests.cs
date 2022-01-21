@@ -69,6 +69,21 @@ namespace TurboCollections.Test
         
             }
         }
+
+        public class GiveAStackWithContent
+        {
+            private static TurboStack<int> Give(int count)
+            {
+                var stack = new TurboStack<int>();
+                for (int i = 0; i < count; i++)
+                {
+                    stack.Push(3);
+                }
+
+                return stack;
+            }
+        }
+        
         
         
     }
