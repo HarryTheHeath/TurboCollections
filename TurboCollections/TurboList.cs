@@ -60,6 +60,10 @@ namespace TurboCollections
 
         public void Clear()
         {
+            for (int i = 0; i < Count; i++)
+            {
+                items[i] = default; // = default(T)
+            }
             Count = 0;
         }
     }
