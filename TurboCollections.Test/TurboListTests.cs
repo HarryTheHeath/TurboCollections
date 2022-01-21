@@ -40,8 +40,7 @@ namespace TurboCollections.Test
         [Test]
         public void MultipleAddedElementsCanBeGotten()
         {
-            int[] numbers = {4, 13, 27, -88, 9, 39, 2};
-            var list = new TurboList<int>();
+            var (numbers, list) = CreateTestData();
             foreach (var number in numbers)
             {
                 list.Add(number);
@@ -51,6 +50,28 @@ namespace TurboCollections.Test
             {
                 Assert.AreEqual(numbers[i], list.Get(i));
             }
+        }
+        
+        [Test]
+        public void ExistingItemsCanBeOverwrittenBySetting()
+        {
+            // discount operator used as only interested in List
+            var (_, list) = CreateTestData();
+            
+            // replace value with 666
+            list.Set(2, 666);
+            Assert.AreEqual(666, list.Get(2));
+
+        }
+
+        (int[] numbers, TurboList<int>) CreateTestData()
+        {
+            int[] numbers = {4, 13, 27, -88, 9, 39, 2};
+            var list = new TurboList<int>();
+            foreach (var number in numbers)
+                list.Add(number);
+
+            return (numbers, list);
         }
     }
 }
