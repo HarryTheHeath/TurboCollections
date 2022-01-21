@@ -27,5 +27,14 @@ namespace TurboCollections.Test
                 list.Add(5);
             Assert.AreEqual(numberOfElements,list.Count);
         }
+
+        [Test]
+        public void AnAddedElementCanBeGet()
+        {
+            var list = new TurboList<int>();
+            list.Add(1337);
+            Assert.AreEqual(1337, list.Get(0));
+
+        }
     }
 }
