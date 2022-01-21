@@ -9,5 +9,10 @@ namespace TurboCollections
         {
             Console.WriteLine("Hello, Turbo!");
         }
+
+        public void Add(T item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
