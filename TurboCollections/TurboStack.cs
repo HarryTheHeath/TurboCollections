@@ -17,5 +17,10 @@ namespace TurboCollections
         {
             return items[Count - 1];
         }
+        
+        public T Pop()
+        {
+            return items[Count - 1];
+        }
     }
 }
