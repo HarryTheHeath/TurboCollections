@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections;
+using NUnit.Framework;
 
 namespace TurboCollections.Test
 {
@@ -35,7 +36,21 @@ namespace TurboCollections.Test
                     {
                         stack.Push(3);
                     }
-                    Assert.AreEqual(1, stack.Count);
+                    Assert.AreEqual(count, stack.Count);
+                }
+
+                [TestCase(1, -7)]
+                [TestCase(5, 0)] 
+                [TestCase(1337, 333)]
+                public void TheLatestItemCanBePeeked(int count, int item)
+                {
+                    var stack = Give();
+                    for (int i = 0; i < count; i++)
+                    {
+                        stack.Push(3);
+                    }
+                    stack.Push(item);
+                    Assert.AreEqual(item, stack.Peek());
                 }
         
             }
