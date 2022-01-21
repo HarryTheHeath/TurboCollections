@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace TurboCollections.Test
@@ -66,26 +67,9 @@ namespace TurboCollections.Test
             const int setIndex = 100;
             // discount operator used as only interested in List
             var (_, list) = CreateTestData();
-            
-            // replace value with 666
-            list.Set(setIndex, 666);
-            Assert.AreEqual(setIndex+1, list.Count);
-            Assert.AreEqual(666, list.Get(setIndex));
+            Assert.Throws<IndexOutOfRangeException>(() => list.Set(setIndex, 666));
         }
-        
-        [Test]
-        public void ExtendingViaSettingPersistsOldValues()
-        {
-            const int setIndex = 100;
-            // discount operator used as only interested in List
-            var (numbers, list) = CreateTestData();
-            
-            // replace value with 666
-            list.Set(setIndex, 666);
-            GetListValue();
-        }
-
-        
+     
         
         (int[] numbers, TurboList<int>) CreateTestData()
         {

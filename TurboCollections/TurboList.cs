@@ -55,12 +55,6 @@ namespace TurboCollections
 
         public void Set(int index, T item)
         {
-            // make sure if array size is large enough + set count to that value
-            if (index >= Count)
-            {
-                EnsureSize(index+1);
-                Count = index + 1;
-            }
             items[index] = item;
         }
     }
