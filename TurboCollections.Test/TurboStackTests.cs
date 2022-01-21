@@ -28,14 +28,22 @@ namespace TurboCollections.Test
             
             public class WhenPushing
             {
-                [TestCase(1), TestCase(5), TestCase(1337)]
-                public void IncreasesCount(int count)
+                private static TurboStack<int> GiveAndPush(int count)
                 {
                     var stack = Give();
                     for (int i = 0; i < count; i++)
                     {
                         stack.Push(3);
                     }
+
+                    return stack;
+                }
+
+
+                [TestCase(1), TestCase(5), TestCase(1337)]
+                public void IncreasesCount(int count)
+                {
+                    var stack = GiveAndPush(count);
                     Assert.AreEqual(count, stack.Count);
                 }
 
@@ -44,14 +52,11 @@ namespace TurboCollections.Test
                 [TestCase(1337, 333)]
                 public void TheLatestItemCanBePeeked(int count, int item)
                 {
-                    var stack = Give();
-                    for (int i = 0; i < count; i++)
-                    {
-                        stack.Push(3);
-                    }
-                    stack.Push(item);
+                    var stack = GiveAndPush(count);
+                   
                     Assert.AreEqual(item, stack.Peek());
                 }
+                
         
             }
         }
