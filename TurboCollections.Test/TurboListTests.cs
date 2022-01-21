@@ -79,7 +79,7 @@ namespace TurboCollections.Test
         }
         
         [Test]
-        public void FirstItemIsAddedAtIndexZeroAfterClearing()
+        public void ItemIsAddedAtIndexZeroAfterClearing()
         {
             var (_, list) = CreateTestData();
             list.Clear();
@@ -113,6 +113,20 @@ namespace TurboCollections.Test
             
             Assert.AreEqual(_numbers.Length-1, list.Count);
         }
+        
+        [Test]
+        public void ItemsAreMovedForwardWhenRemovingAt()
+        {
+            var (_numbers, list) = CreateTestData();
+
+            list.RemoveAt(2);
+
+            for (int i = 2; i <_numbers.Length-1; i++)
+            {
+                Assert.AreEqual(_numbers[i+1], list.Get(i), $"Wrong item at index {i}");
+            }
+        }
+
 
         (int[] numbers, TurboList<int>) CreateTestData()
         {
