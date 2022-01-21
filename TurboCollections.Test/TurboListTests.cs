@@ -53,14 +53,28 @@ namespace TurboCollections.Test
         }
         
         [Test]
-        public void ExistingItemsCanBeOverwrittenBySetting()
+        public void ExistingItemsCanBeOverwrittenBySetting(int item)
         {
             // discount operator used as only interested in List
             var (_, list) = CreateTestData();
             
             // replace value with 666
-            list.Set(2, 666);
-            Assert.AreEqual(666, list.Get(2));
+            list.Set(2, item);
+            Assert.AreEqual(item, list.Get(2));
+
+        }
+        
+        [Test]
+        public void ArrayCanBeExtendedBySetting()
+        {
+            const int setIndex = 100;
+            // discount operator used as only interested in List
+            var (_, list) = CreateTestData();
+            
+            // replace value with 666
+            list.Set(setIndex, 666);
+            Assert.AreEqual(setIndex+1, list.Count);
+            Assert.AreEqual(666, list.Get(setIndex));
 
         }
 
