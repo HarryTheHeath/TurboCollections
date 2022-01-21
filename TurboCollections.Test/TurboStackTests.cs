@@ -14,9 +14,6 @@ namespace TurboCollections.Test
 
         public class GivenANewStack
         {
-            private static TurboStack<int> stack;
-            
-            [SetUp]
             public static TurboStack<int> Give()
             {
                 return new TurboStack<int>();
@@ -25,17 +22,20 @@ namespace TurboCollections.Test
             [Test]
             public void ItHasACountOfZero()
             {
-                Assert.Zero(stack.Count);
+                Assert.Zero(Give().Count);
             }
             
             public class WhenPushing
             {
-                [Test]
-                public void IncreasesCount()
+                [TestCase(1), TestCase(5), TestCase(1337)]
+                public void IncreasesCount(int count)
                 {
                     var stack = Give();
-                    stack.Push(3);
-                    Assert.AreEqual(1, GivenANewStack.stack.Count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        stack.Push(3);
+                    }
+                    Assert.AreEqual(1, stack.Count);
                 }
         
             }
