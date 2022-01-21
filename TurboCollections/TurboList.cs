@@ -57,5 +57,10 @@ namespace TurboCollections
         {
             items[index] = item;
         }
+
+        public void Clear()
+        {
+            Count = 0;
+        }
     }
 }
