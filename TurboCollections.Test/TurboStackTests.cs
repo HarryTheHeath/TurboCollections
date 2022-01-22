@@ -53,7 +53,7 @@ namespace TurboCollections.Test
                 public void TheLatestItemCanBePeeked(int count, int item)
                 {
                     var stack = GiveAndPush(count);
-                   
+                    stack.Push(item);
                     Assert.AreEqual(item, stack.Peek());
                 }
                 
@@ -82,10 +82,14 @@ namespace TurboCollections.Test
 
                 return stack;
             }
+
+            [Test]
+            public void CountIsNotZero()
+            {
+                var stack = Give(7);
+                Assert.NotZero(stack.Count);
+            }
         }
-        
-        
-        
     }
     
 }
