@@ -2,7 +2,7 @@
 
 namespace TurboCollections
 {
-    public class TurboStack<T>
+    public class TurboStack<T> : ITurboStack<T>
     {
         private T[] items = System.Array.Empty<T>();
         public int Count { get; private set; }
@@ -15,12 +15,14 @@ namespace TurboCollections
 
         public T Peek()
         {
-            return items[Count - 1];
+            return items[Count-1];
         }
         
         public T Pop()
         {
-            return items[Count - 1];
+            var result = items[--Count];
+            items[Count] = default;
+            return result;
         }
     }
 }
