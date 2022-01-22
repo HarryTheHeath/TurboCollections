@@ -103,6 +103,28 @@ namespace TurboCollections.Test
                 }
             }
         }
+
+        [Test]
+        public void PassesSmokeTest()
+        {
+            var stack = new TurboStack<int>(); // --
+            Assert.Zero(stack.Count);
+            
+            stack.Push(5); // 5
+            Assert.AreEqual(1, stack.Count);
+            Assert.AreEqual(5, stack.Peek());
+            
+            stack.Push(7); // 5-7
+            Assert.AreEqual(7, stack.Pop()); // 5
+            
+            stack.Push(9); // 5-9
+            Assert.AreEqual(2, stack.Count);
+            Assert.AreEqual(9, stack.Pop()); // 5
+            Assert.AreEqual(1, stack.Count);
+            
+            Assert.AreEqual(5, stack.Pop()); // --
+            Assert.Zero(stack.Count);
+        }
     }
     
 }
