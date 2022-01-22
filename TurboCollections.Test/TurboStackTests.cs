@@ -89,6 +89,19 @@ namespace TurboCollections.Test
                 var stack = Give(7);
                 Assert.NotZero(stack.Count);
             }
+            
+            public class WhenPopping
+            {
+                [TestCase(1)]
+                [TestCase(7)] 
+                [TestCase(999)]
+                public void ItDecreasesCount(int count)
+                {
+                    var stack = Give(count);
+                    stack.Pop();
+                    Assert.AreEqual(count-1, stack.Count);
+                }
+            }
         }
     }
     
